@@ -1,0 +1,17 @@
+bin/sdbquery "
+select ?result where {
+?result a <http://circlesofsustainability.org/ontology#Indicator>.
+?result <http://circlesofsustainability.org/ontology#belongsToIndicatorSet> ?gri.
+?gri <http://circlesofsustainability.org/ontology#hasName> 'GRI Indicator Set'. } "
+
+
+bin/sdbquery "
+select ?result where {
+?result a <http://circlesofsustainability.org/ontology#Indicator>.
+?result <http://circlesofsustainability.org/ontology#hasIdentifyingCode> 'EC1'.} "
+
+bin/sdbquery "
+select ?result where {
+?result a <http://circlesofsustainability.org/ontology#Subdomain> ; <http://circlesofsustainability.org/ontology#subdomainID> ?sd.}
+ORDER BY ?sd "
+

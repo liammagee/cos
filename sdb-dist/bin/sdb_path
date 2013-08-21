@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$SDBROOT" = "" ]
+then
+    echo "SDBROOT not set" 1>&2
+    exit 1
+    fi
+
+export CP="$SDB_CP"
+exec "$SDBROOT/bin/make_classpath" "$SDBROOT"

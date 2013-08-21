@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="stylesheets/ungccp.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#side-menu .current-menu-item").append("<span class='arrow'>&nbsp</span>");
+	});
+</script>
+</head>
+<body>
+<div id="page-wrap">
+	
+	<!-- Header -->
+	<div id="header">
+		<div class="wrapper">
+		
+			<!-- Logo link to homepage -->
+			<a href=""><div id="logo"></div></a>
+			
+			<!-- TranslateThis Button -->
+			<div id="translate-this"> <a href="http://translateth.is/" class="translate-this-button">Translate</a> </div>
+			<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+			<script type="text/javascript" src="http://x.translateth.is/translate-this.js"></script>
+			<script type="text/javascript"> TranslateThis(); </script>
+	
+			<!-- Menu with search input -->
+			<div id="menu">
+				<div class="wrapper">
+					<div id="menu-search">
+						<form action="" id="searchform" method="get">
+							<div>
+								<label for="search" class="screen-reader-text">Search for:</label>
+								<input type="text" id="search" name="search" value="" />
+								<input type="submit" value="Search" id="searchsubmit" />
+							</div>
+						</form>
+					</div>
+					<nav>
+						<div class="menu-main-container">
+							<ul id="menu-main" class="menu">
+								<li class="menu-item current-menu-item">
+									<a href="#">CURRENT MENU ITEM</a>
+								</li>
+								<li class="menu-item">
+									<a href="#">MENU ITEM</a>
+								</li>
+								<li class="menu-item">
+									<a href="#">MENU ITEM</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- Body -->
+	<div id="body">
+		<div class="wrapper">
+			
+			<!-- Main Content -->
+			<div id="main-content" class="basic">
+			
+				<h1>Heading 1</h1>
+				<img class="alignright" title="New-York" src="images/ungccp/New-York.jpg" width="400" />
+				<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus, ipsum ut vulputate semper, mauris purus sodales felis, quis pretium arcu enim vel tortor. Morbi at justo enim. Suspendisse potenti. Nam aliquam magna at ipsum ultricies luctus. Curabitur magna purus, hendrerit sed convallis nec, iaculis eget felis. Aenean mi lorem, convallis non imperdiet sed, congue ac felis. In tortor ipsum, tempus ut rhoncus sed, viverra at orci.</p></blockquote>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus, ipsum ut vulputate semper, mauris purus sodales felis, quis pretium arcu enim vel tortor. Morbi at justo enim. Suspendisse potenti. Nam aliquam magna at ipsum ultricies luctus. Curabitur magna purus, hendrerit sed convallis nec, iaculis eget felis. Aenean mi lorem, convallis non imperdiet sed, congue ac felis. In tortor ipsum, tempus ut rhoncus sed, viverra at orci.</p>
+				
+				<h2>Heading 2</h2>
+				<ol>
+					<li>item 1</li>
+					<li>item 2</li>
+				</ol>
+				
+				<h2>Heading 2</h2>
+				<ul>
+					<li>item 1</li>
+					<li>item 2</li>
+				</ul>
+
+				<p><a href="#">Link</a></p>
+
+			</div>
+			
+			<!-- Side Menu -->
+			<aside id="side-menu">
+				<img src="images/ungccp/melbourne2.jpg"/>
+				<ul>
+					<li class="menu-item current-menu-item"><a href="#">Current Side Link</a></li>
+					<li class="menu-item"><a href="#">Side Link</a></li>
+					<li class="menu-item"><a href="#">Side Link</a></li>
+					<li class="menu-item"><a href="#">Side Link</a></li>
+				</ul>
+			</aside>
+			
+			<div class='clear'></div>
+		</div>
+	</div>
+		
+	<!-- Footer -->
+	<div id='footer'>
+		<div class="wrapper">
+			<div id="footer-contact1">
+				<h1>Header</h1>
+				<p>Text</p>
+			</div>
+			<div id="footer-contact2">
+				<h1>Header</h1>
+				<p>Text</p>
+			</div>
+			<div id="footer-links">
+				<h1>Links</h1>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+			</div>
+			<div id="footer-contact">
+				<h1>Contact</h1>
+				<form role="contact" method="post" id="contactform" action="#" >
+					<input name="name" type="text" id="name" placeholder="name"/>
+					<input name="email" type="text" id="email" placeholder="email"/>
+					<textarea name="message" rows="5" id="message" placeholder="message"></textarea>
+					<input type="submit" id="searchsubmit" value="SUBMIT" />
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>

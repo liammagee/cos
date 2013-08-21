@@ -1,0 +1,66 @@
+/* CSS Document */
+
+.notice {
+    color: red;
+}
+
+
+#controlLinks a {
+	color:#FFF;
+	text-decoration:none;
+	border-bottom:1px dotted;
+}
+a:hover {
+	border-bottom:1px solid;
+	color:#9343B9;
+}
+td, td p, th {
+    text-align: left;
+    vertical-align: top;
+}
+#header a {
+	color:#FFF;
+	}
+#header h1 {
+	font-size:200%;
+	}
+#header a:hover {
+	color:#7A2875;
+	}
+#header #logo {
+	float:right;
+	}
+
+#centercol a, #leftcol a, #rightcol a {
+	color:#666;
+	}
+#centercol a:hover {
+	border-bottom:1px solid;
+	color:#9343B9;
+	}
+#notifications ul, #leftcol ul, #rightcol ul {
+	list-style:none;
+    margin-left:0;
+    padding-left:0;
+}
+#notifications li, #leftcol li, #rightcol li {
+    font-size: 0.9em;
+}
+#notifications ul>li>ul, #leftcol ul>li>ul, #rightcol ul>li>ul {
+    margin-left:1em;
+    padding-left:0;
+}
+#notifications ul>li>ul>li, #leftcol ul>li>ul>li, #rightcol ul>li>ul>li {
+    font-size: 0.95em;
+}
+
+input[type="text"], textarea {
+    width: 80%;
+}
+textarea {
+    height: 180px;
+}
+
+#map-canvas, #map_canvas {
+    height: 100%;
+}

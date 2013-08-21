@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cos" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/alt-rt.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${basedir}/war/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module cos -->
+  
+  <dirname property="module.cos.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.cos" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cos" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cos" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cos" value="${compiler.args}"/>
+  
+  <property name="cos.output.dir" value="${module.cos.basedir}/war/WEB-INF/classes"/>
+  <property name="cos.testoutput.dir" value="${module.cos.basedir}/test-classes"/>
+  <property name="cos.docs.output.dir" value="${module.cos.basedir}/docs/javadoc"/>
+
+  <property name="cos.test.source.dir" value="${module.cos.basedir}/test"/>
+
+  <path id="cos.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cos.module.production.classpath">
+    <path refid="${module.jdk.classpath.cos}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="cos.runtime.production.module.classpath">
+    <pathelement location="${cos.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="cos.module.classpath">
+    <path refid="${module.jdk.classpath.cos}"/>
+    <pathelement location="${cos.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="cos.runtime.module.classpath">
+    <pathelement location="${cos.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cos">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cos">
+    <patternset refid="excluded.from.module.cos"/>
+  </patternset>
+  
+  <path id="cos.module.sourcepath">
+    <dirset dir="${module.cos.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="cos.module.test.sourcepath">
+    <dirset dir="${module.cos.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+
+  <path id="cos.module.all.sourcepath">
+      <path refid="cos.module.sourcepath"/>
+      <path refid="cos.module.test.sourcepath"/>
+  </path>
+
+  <path id="cos.module.test.classpath">
+      <pathelement location="${cos.testoutput.dir}"/>
+      <path refid="cos.module.classpath"/>
+  </path>
+
+  
+  <target name="compile.module.cos" depends="compile.module.cos.production,compile.module.cos.tests" description="Compile module cos"/>
+  
+  <target name="compile.module.cos.production" description="Compile module cos; production classes">
+    <mkdir dir="${cos.output.dir}"/>
+    <javac destdir="${cos.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cos}/javac">
+      <compilerarg line="${compiler.args.cos}"/>
+      <bootclasspath refid="cos.module.bootclasspath"/>
+      <classpath refid="cos.module.production.classpath"/>
+      <src refid="cos.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cos"/>
+    </javac>
+    
+    <copy todir="${cos.output.dir}">
+      <fileset dir="${module.cos.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cos.tests" depends="compile.module.cos.production" description="compile module cos; test classes" unless="skip.tests">
+    <mkdir dir="${cos.testoutput.dir}"/>
+    <javac destdir="${cos.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cos}/javac">
+      <compilerarg line="${compiler.args.cos}"/>
+      <bootclasspath refid="cos.module.bootclasspath"/>
+      <classpath refid="cos.module.classpath"/>
+      <src refid="cos.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cos"/>
+    </javac>
+    
+    <copy todir="${cos.testoutput.dir}">
+      <fileset dir="${module.cos.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.cos" description="cleanup module">
+    <delete dir="${cos.output.dir}"/>
+    <delete dir="${cos.testoutput.dir}"/>
+    <delete dir="${cos.docs.output.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.cos" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.cos" description="build all modules"/>
+  
+
+
+    <!-- TODO: Don't think Ant supports SVN checkout, and maybe not a good idea to have this anyway -->
+    <target name="svn.checkout" description="Sample SVN checkout">
+    </target>
+
+
+  <target name="run.tests" depends="build.modules" description="Run JUnit tests">
+      <junit dir="${cos.testoutput.dir}" haltonfailure="yes" haltonerror="yes">
+          <classpath refid="cos.module.test.classpath"/>
+          <batchtest>
+            <fileset dir="${cos.test.source.dir}">
+              <include name="**/*Test*.java"/>
+              <exclude name="**/AllTests.java"/>
+              <exclude name="**/*TestUtil.java"/>
+            </fileset>
+              <formatter type="plain" usefile="false"/>
+          </batchtest>
+      </junit>
+  </target>
+
+  <target name="war.cos" depends="build.modules" description="Create a WAR (Web Archive) file for Circles of Sustainability">
+      <war basedir="war/" destfile="cos.war">
+      </war>
+  </target>
+
+  <target name="generate.javadocs" depends="" description="Generates JavaDocs">
+      <mkdir dir="${cos.docs.output.dir}"/>
+      <javadoc sourcepathref="cos.module.sourcepath" destdir="${cos.docs.output.dir}" classpathref="cos.module.classpath"/>
+  </target>
+
+  <target name="reseed.triplestore" depends="build.modules" description="Loads the default dataset into the SDB triple store">
+      <java classpathref="cos.runtime.module.classpath" classname="edu.rmit.sustainability.setup.Setup"/>
+  </target>
+
+  <target name="copy.to.server" depends="" description="[EXPERIMENTAL] - copies web archive to server">
+      <!-- Note: obviously we need the proper credentials here -->
+      <scp file="cos.war" todir="username:password@goanna.cs.rmit.edu.au:/public/groups/cos/war/"/>
+  </target>
+
+  <target name="all" depends="build.modules" description="build all"/>
+
+  <target name="complete" depends="build.modules, run.tests, generate.javadocs, war.cos" description="Builds, tests and packages the application"/>
+</project>
